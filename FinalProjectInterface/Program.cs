@@ -10,10 +10,14 @@ namespace FinalProjectInterface
             try
             {
 
-                Console.WriteLine("Введите 1 число: ");
+                Console.WriteLine("Введите положительное 1ое число: ");
                 int.TryParse(Console.ReadLine(), out int num1);
-                Console.WriteLine("Введите 2 число: ");
+                Console.WriteLine("Введите положительное 2ое число: ");
                 int.TryParse(Console.ReadLine(), out int num2);
+                if (num1 < 0 || num2 < 0)
+                {
+                    throw new FormatException();
+                }
                 Calculator calculator = new Calculator();
                 Console.WriteLine(calculator.Operation(num1, num2));
 
@@ -27,7 +31,8 @@ namespace FinalProjectInterface
             }
             catch (Exception ex)
             {
-                if (ex is FormatException) Console.WriteLine("Вы ввели неверное значение.");
+                Console.BackgroundColor = ConsoleColor.Red;
+                if (ex is FormatException) Console.WriteLine($"Вы ввели неверное значение.\n{ex}");
                 else Console.WriteLine($"Ошибка: {ex}");
             }
             Console.ReadKey();
@@ -40,8 +45,7 @@ namespace FinalProjectInterface
         {
             public int Operation(int x, int y)
             {
-                Console.BackgroundColor = ConsoleColor.Green;
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.BackgroundColor = ConsoleColor.Blue;
                 return x + y;
             }
         }
