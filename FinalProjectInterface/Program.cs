@@ -38,11 +38,11 @@ namespace FinalProjectInterface
         }
         class Calculator : IOperationNum
         {
-            public int Operation(int x, int y) 
-            { 
+            public int Operation(int x, int y)
+            {
                 Console.BackgroundColor = ConsoleColor.Green;
                 Console.ForegroundColor = ConsoleColor.Blue;
-                return x + y; 
+                return x + y;
             }
         }
         public interface IOperation
