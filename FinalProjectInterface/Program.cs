@@ -11,9 +11,14 @@
                 Console.WriteLine("Введите 2 число: ");
                 int.TryParse(Console.ReadLine(), out int num2);
                 Calculator calculator = new Calculator();
-                ((ISumNum)calculator).Sum(num1, num2);
+                Console.WriteLine(((ISumNum)calculator).Sum(num1, num2));
             }
-            catch { }
+            catch (Exception ex)
+            {
+                if (ex is FormatException) Console.WriteLine("Вы ввели неверное значение.");
+                else Console.WriteLine($"Ошибка: {ex}");
+            }
+            Console.ReadKey();
         }
         interface ISumNum
         {
